@@ -6,6 +6,11 @@ As First:
 
 ### `npm install`
 
+And Install Json Server:
+
+### `npm install -g json-server`
+### `npm i json-server`
+
 In the project directory, you can run:
 
 ### `npm start`
