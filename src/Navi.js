@@ -8,6 +8,7 @@ import {
   NavLink,
   Nav
 } from "reactstrap";
+import { Link } from "react-router-dom";
 import CardSummary from "./CardSummary";
 
 export default class Navi extends React.Component {
@@ -33,7 +34,7 @@ export default class Navi extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <Link to="/form1">Form Demo 1</Link>
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">

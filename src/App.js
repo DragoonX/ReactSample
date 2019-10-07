@@ -3,6 +3,11 @@ import Navi from "./Navi";
 import CategoryList from "./CategoryList";
 import ProductList from "./ProductList";
 import { Container, Row, Col } from "reactstrap";
+import alertify from "alertifyjs";
+import { Route, Switch } from "react-router-dom";
+import NotFound from "./NotFound";
+import CardList from "./CardList";
+import FormDemo1 from "./FormDemo1";
 
 export default class App extends Component {
   state = {
@@ -37,11 +42,13 @@ export default class App extends Component {
       addedItem.quantity += 1;
     } else newCard.push({ product: product, quantity: 1 });
     this.setState({ card: newCard });
+    alertify.success(product.productName + " added to card", 2); //ürün eklenirse bildirim oluşumu buradan yapılır.
   };
 
   removeFromCard = product => {
     let newCard = this.state.card.filter(c => c.product.id !== product.id);
     this.setState({ card: newCard });
+    alertify.error(product.productName + " removed from card", 2);
   };
 
   render() {
@@ -60,12 +67,34 @@ export default class App extends Component {
               />
             </Col>
             <Col xs="9">
-              <ProductList
-                products={this.state.products}
-                addToCard={this.addToCard}
-                info={productInfo}
-                currentCategory={this.state.currentCategory}
-              />
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={props => (
+                    <ProductList
+                      {...props} //propsların bir kopyasını alıp gönder.
+                      products={this.state.products}
+                      addToCard={this.addToCard}
+                      currentCategory={this.state.currentCategory}
+                      info={productInfo}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/card"
+                  render={props => (
+                    <CardList
+                      {...props} //propsların bir kopyasını alıp gönder.
+                      card={this.state.card}
+                      removeFromCard={this.removeFromCard}
+                    />
+                  )}
+                />
+                <Route path="/form1" component={FormDemo1}></Route>
+                <Route component={NotFound}></Route>
+              </Switch>
             </Col>
           </Row>
         </Container>
