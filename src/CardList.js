@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Table, Button } from "reactstrap";
+import React, { Component } from "react"
+import { Table, Button } from "reactstrap"
 
 export default class CardList extends Component {
   renderCard() {
@@ -26,10 +26,7 @@ export default class CardList extends Component {
               <td>{cardItem.product.unitsInStock}</td>
               <td>{cardItem.quantity}</td>
               <td>
-                <Button
-                  color="danger"
-                  onClick={() => this.props.removeFromCard(cardItem.product)}
-                >
+                <Button color="danger" onClick={() => this.props.removeFromCard(cardItem.product)}>
                   Remove
                 </Button>
               </td>
@@ -37,10 +34,10 @@ export default class CardList extends Component {
           ))}
         </tbody>
       </Table>
-    );
+    )
   }
 
   render() {
-    return <div>{this.renderCard()}</div>;
+    return <div>{this.renderCard()}</div>
   }
 }

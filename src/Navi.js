@@ -1,29 +1,21 @@
-import React from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  NavItem,
-  NavLink,
-  Nav
-} from "reactstrap";
-import { Link } from "react-router-dom";
-import CardSummary from "./CardSummary";
+import React from "react"
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, NavItem, NavLink, Nav } from "reactstrap"
+import { Link } from "react-router-dom"
+import CardSummary from "./CardSummary"
 
 export default class Navi extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.toggle = this.toggle.bind(this);
+    this.toggle = this.toggle.bind(this)
     this.state = {
       isOpen: false
-    };
+    }
   }
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
-    });
+    })
   }
   render() {
     return (
@@ -37,21 +29,15 @@ export default class Navi extends React.Component {
                 <NavLink>
                   <Link to="/form1">Form Demo 1</Link>
                 </NavLink>
-                
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
-                  GitHub
-                </NavLink>
+                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
               </NavItem>
-              <CardSummary
-                card={this.props.card}
-                removeFromCard={this.props.removeFromCard}
-              />
+              <CardSummary card={this.props.card} removeFromCard={this.props.removeFromCard} />
             </Nav>
           </Collapse>
         </Navbar>
       </div>
-    );
+    )
   }
 }

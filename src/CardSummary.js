@@ -1,14 +1,6 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import {
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Badge,
-  NavItem,
-  NavLink
-} from "reactstrap";
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
+import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Badge, NavItem, NavLink } from "reactstrap"
 
 export default class CardSummary extends Component {
   renderSummary() {
@@ -20,10 +12,7 @@ export default class CardSummary extends Component {
         <DropdownMenu right>
           {this.props.card.map(cardItem => (
             <DropdownItem key={cardItem.product.id}>
-              <Badge
-                color="danger"
-                onClick={() => this.props.removeFromCard(cardItem.product)}
-              >
+              <Badge color="danger" onClick={() => this.props.removeFromCard(cardItem.product)}>
                 X
               </Badge>
               {cardItem.product.productName + " "}
@@ -34,7 +23,7 @@ export default class CardSummary extends Component {
           <Link to="card">Go To Card !!!</Link> {/* card route una git */}
         </DropdownMenu>
       </UncontrolledDropdown>
-    );
+    )
   }
 
   renderEmptyCard() {
@@ -42,16 +31,10 @@ export default class CardSummary extends Component {
       <NavItem>
         <NavLink>Empty Card</NavLink>
       </NavItem>
-    );
+    )
   }
 
   render() {
-    return (
-      <div>
-        {this.props.card.length > 0
-          ? this.renderSummary()
-          : this.renderEmptyCard()}
-      </div>
-    );
+    return <div>{this.props.card.length > 0 ? this.renderSummary() : this.renderEmptyCard()}</div>
   }
 }
